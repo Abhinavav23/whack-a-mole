@@ -15,7 +15,7 @@ let decreaseTimeTimer;
 squareDivs.forEach((squareDiv) => {
     squareDiv.onclick = () => {
         console.log('id is', squareDiv.classList.contains('mole-image'));
-        if(squareDiv.classList.contains('mole-image')){
+        if(squareDiv.classList.contains('mole-image') && gameTime > 0){
             gameScore = gameScore+1
             score.innerText = gameScore;
         }
@@ -38,7 +38,6 @@ const decreaseTime = () => {
         clearInterval(decreaseTimeTimer);
         over.innerText = 'Game Over'
         startButton.disabled = false
-        gameTime = 11
     }
 }
 
@@ -62,6 +61,7 @@ startButton.onclick = () => {
     } else{
         intervalTime = 800
     }
+    gameTime = 11
     selectRandomSquareTimer = setInterval(selectRandomSquare, intervalTime);
     console.log(intervalTime);
     console.log(level.value);
